@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mis comidas</title>
+</head>
+<body style="font-family: Arial; background-color: #f5f5f5;">
+
+    <h1 style="text-align:center;">🍽 Mis comidas</h1>
+
+    <div style="width: 60%; margin: auto;">
+        {% for plato in platos %}
+            <div style="background: white; padding: 15px; margin: 10px; border-radius: 10px; box-shadow: 2px 2px 5px #ccc;">
+                <h3>{{ plato.nombre }}</h3>
+            </div>
+        {% empty %}
+            <p>No hay comidas registradas 😢</p>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
