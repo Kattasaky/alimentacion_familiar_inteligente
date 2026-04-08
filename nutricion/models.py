@@ -30,7 +30,7 @@ class Alimento(models.Model):
 class Preferencia(models.Model):
     persona = models.ForeignKey(Persona, on_delete=models.CASCADE)
     alimento = models.ForeignKey(Alimento, on_delete=models.CASCADE)
-    acepta = models.BooleanField()
+    acepta = models.BooleanField("Acepta este alimento", default=False)
 
     def __str__(self):
         return f"{self.persona} - {self.alimento} - {self.acepta}"
@@ -52,18 +52,29 @@ class Ingrediente(models.Model):
     def __str__(self):
         return f"{self.plato} - {self.alimento}"
 
-
+    
 class MenuSemanal(models.Model):
-    fecha_inicio = models.DateField()
+    DIAS = [
+        ('Lunes', 'Lunes'),
+        ('Martes', 'Martes'),
+        ('Miercoles', 'Miércoles'),
+        ('Jueves', 'Jueves'),
+        ('Viernes', 'Viernes'),
+        ('Sabado', 'Sábado'),
+        ('Domingo', 'Domingo'),
+    ]
 
-    def __str__(self):
-        return f"Semana de {self.fecha_inicio}"
+    TIPO_COMIDA = [
+        ('Desayuno', 'Desayuno'),
+        ('Almuerzo', 'Almuerzo'),
+        ('Once', 'Once'),
+        ('Cena', 'Cena'),
+        ('Colacion', 'Colación'),
+    ]
 
-
-class DiaMenu(models.Model):
-    menu = models.ForeignKey(MenuSemanal, on_delete=models.CASCADE)
-    dia = models.CharField(max_length=10)  # lunes, martes...
+    dia = models.CharField(max_length=10, choices=DIAS)
+    tipo = models.CharField(max_length=10, choices=TIPO_COMIDA)
     plato = models.ForeignKey(Plato, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.dia} - {self.plato}"
+        return f"{self.dia} - {self.tipo} - {self.plato.nombre}"
