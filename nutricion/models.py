@@ -74,7 +74,7 @@ class MenuSemanal(models.Model):
 
     dia = models.CharField(max_length=10, choices=DIAS)
     tipo = models.CharField(max_length=10, choices=TIPO_COMIDA)
-    plato = models.ForeignKey(Plato, on_delete=models.CASCADE)
+    platos = models.ManyToManyField(Plato)
 
     def __str__(self):
-        return f"{self.dia} - {self.tipo} - {self.plato.nombre}"
+        return f"{self.dia} - {self.tipo}"
