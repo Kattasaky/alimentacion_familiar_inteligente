@@ -38,10 +38,12 @@ class Preferencia(models.Model):
 
 class Plato(models.Model):
     TIPO_PLATO = [
-        ('fondo', 'Fondo'),
-        ('ensalada', 'Ensalada'),
-        ('bebestible', 'Bebestible'),
-    ]
+    ('principal', 'Principal'),
+    ('acompanamiento', 'Acompañamiento'),
+    ('bebida', 'Bebida'),
+    ('fruta', 'Fruta'),
+    ('snack', 'Snack'),
+]
 
     nombre = models.CharField(max_length=100)
     tipo = models.CharField(max_length=20, choices=TIPO_PLATO)
