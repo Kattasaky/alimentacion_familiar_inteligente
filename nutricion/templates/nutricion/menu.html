@@ -1,1 +1,33 @@
-<h1>Menú semanal</h1>
+<h1>Menú Semanal</h1>
+
+{% for menu in menus %}
+    <h2>{{ menu.dia }} - {{ menu.tipo }}</h2>
+
+    <strong>Fondo:</strong>
+    <ul>
+        {% for plato in menu.platos.all %}
+            {% if plato.tipo == "fondo" %}
+                <li>{{ plato.nombre }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <strong>Ensaladas:</strong>
+    <ul>
+        {% for plato in menu.platos.all %}
+            {% if plato.tipo == "ensalada" %}
+                <li>{{ plato.nombre }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <strong>Bebestibles:</strong>
+    <ul>
+        {% for plato in menu.platos.all %}
+            {% if plato.tipo == "bebestible" %}
+                <li>{{ plato.nombre }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+{% endfor %}
