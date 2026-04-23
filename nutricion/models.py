@@ -64,11 +64,13 @@ class Plato(models.Model):
 class Ingrediente(models.Model):
     plato = models.ForeignKey(Plato, on_delete=models.CASCADE)
     alimento = models.ForeignKey(Alimento, on_delete=models.CASCADE)
-    cantidad = models.CharField(max_length=50)  # ejemplo: "1 taza"
+    cantidad = models.CharField(max_length=50)
+
+    # NUEVOS CAMPOS
+    cantidad_gramos = models.FloatField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.plato} - {self.alimento}"
-
     
 class MenuSemanal(models.Model):
     DIAS = [
