@@ -23,6 +23,14 @@ class Alimento(models.Model):
     nombre = models.CharField(max_length=100)
     tipo = models.CharField(max_length=20, choices=TIPO_CHOICES)
 
+    # NUEVOS CAMPOS 
+    energia = models.FloatField(null=True, blank=True)
+    grasas = models.FloatField(null=True, blank=True)
+    carbohidratos = models.FloatField(null=True, blank=True)
+    proteinas = models.FloatField(null=True, blank=True)
+    sodio = models.FloatField(null=True, blank=True)
+    azucar = models.FloatField(null=True, blank=True)
+
     def __str__(self):
         return self.nombre
 
